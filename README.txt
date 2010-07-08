@@ -1,12 +1,12 @@
-LOD Mixer for PES/WE                                            June 23, 2006
+LOD Mixer for PES/WE                                            July 8, 2010
 =============================================================================
-Version 1.8a. 
+Version 1.9
 
 
 1. SUPPORTED GAME VERSIONS
 --------------------------
 PC: PES5, PES5 Demo 2(no voice), PES4, WE8I. 
-XBOX: PES5, PES5-beta, WE9
+XBOX: WE8I, PES5, PES5-beta, WE9
 
 NOTE: Not all features are supported in all game versions on all platforms.
 For example, "crowd-fix for all cameras" and League/Cup/ML controls only

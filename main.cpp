@@ -38,8 +38,21 @@ char* ShortNames[] = {
 
 extern char* GAME[];
 
+enum {
+    PES4=0,
+    PES4_110,
+    WE8I,
+    PES5_DEMO2,
+    PES5,
+    WE8I_XBOX,
+    PES5_XBOX,
+    PES5_XBOX_BETA,
+    WE9_XBOX,
+};
+
 DWORD LOD_TABLE_OFFSET[] = {
-    0x6c87fc, 0x6ca7e4, 0x6ca824, 0x461a88, 0x82e5b4, 0x53fa8c, 0x53fa8c, 0x53f61c
+    0x6c87fc, 0x6ca7e4, 0x6ca824, 0x461a88, 0x82e5b4, 
+    0x3f647c, 0x53fa8c, 0x53fa8c, 0x53f61c, 
 };
 DWORD LODS[][5] = {
     {0x8cac70, 0x8cad00, 0x8cad90, 0x8cae20, 0x8caeb0},
@@ -47,13 +60,14 @@ DWORD LODS[][5] = {
     {0x8ccba0, 0x8ccc30, 0x8cccc0, 0x8ccd50, 0x8ccde0},
     {0x704670, 0x704730, 0x7047f0, 0x7048b0, 0x704950},
     {0x8515f0, 0x8516b0, 0x851770, 0x851830, 0x8518d0},
+    {0x0afb00, 0x0afb90, 0x0afc20, 0x0afcb0, 0x0afd40},
     {0x316640, 0x316700, 0x3167c0, 0x316880, 0x316920},
     {0x316630, 0x3166f0, 0x3167b0, 0x316870, 0x316910},
     {0x316630, 0x3166f0, 0x3167b0, 0x316870, 0x316910},
 };
 
 DWORD CROWDBLOCK_PROC[] = {
-    0, 0, 0, 0x79bb0, 0x19bab0, 0x6b870, 0x6b870, 0x6b780,
+    0, 0, 0, 0x79bb0, 0x19bab0, 0, 0x6b870, 0x6b870, 0x6b780,
 };
 
 DWORD WEATHER_SWITCH[][2] = {
@@ -62,6 +76,7 @@ DWORD WEATHER_SWITCH[][2] = {
     {0, 0},
     {0, 0},
     {0x2e52d8, 0x2e52dd},
+    {0, 0},
     {0x14ca83, 0x14ca88},
     {0x14caf3, 0x14caf8},
     {0x14ca53, 0x14ca58},
@@ -157,6 +172,7 @@ BYTE* LCM_CODE[][6] = {
     {0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
 };
 
 DWORD LCM_DATA_ADDRESSES[][2] = {
@@ -165,6 +181,7 @@ DWORD LCM_DATA_ADDRESSES[][2] = {
     {0, 0},
     {0, 0},
     {0xa43b20, 0x3be0f40},
+    {0, 0},
     {0, 0},
     {0, 0},
     {0, 0},
@@ -180,6 +197,7 @@ DWORD LCM_PATCH_LOCATION[][2] = {
     {0, 0},
     {0, 0},
     {0, 0},
+    {0, 0},
 };
 
 // location of frame-counter function
@@ -189,6 +207,7 @@ DWORD FC_LOCATION[][2] = {
     {0, 0},
     {0, 0},
     {0x6cd3f4, 0xacd3f4},  // file offset, runtime address
+    {0, 0},
     {0, 0},
     {0, 0},
     {0, 0},
@@ -205,6 +224,7 @@ BYTE LCM_PATCH_HOOK[][5] = {
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
 };
 
 BYTE LCM_PATCH_HOOK_UNDO[][5] = {
@@ -216,6 +236,7 @@ BYTE LCM_PATCH_HOOK_UNDO[][5] = {
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
 };
 
 DWORD LCM_PATCH_HOOK_CS[][2] = {
@@ -224,6 +245,7 @@ DWORD LCM_PATCH_HOOK_CS[][2] = {
     {0, 0},
     {0, 0},
     {0x6312f7, 0xa312f7},  // file offset, runtime address
+    {0, 0},
     {0, 0},
     {0, 0},
     {0, 0},
@@ -240,6 +262,7 @@ BYTE LCM_PATCH_FC_HOOK[][5] = {
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
 };
 
 BYTE LCM_PATCH_FC_HOOK_UNDO[][5] = {
@@ -251,6 +274,7 @@ BYTE LCM_PATCH_FC_HOOK_UNDO[][5] = {
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
 };
 
 DWORD LCM_PATCH_FC_HOOK_CS[][2] = {
@@ -259,6 +283,7 @@ DWORD LCM_PATCH_FC_HOOK_CS[][2] = {
     {0, 0},
     {0, 0},
     {0xeaf0, 0x40eaf0},  // file offset, runtime address
+    {0, 0},
     {0, 0},
     {0, 0},
     {0, 0},
@@ -287,6 +312,38 @@ void PopulateLodLists(int* indices);
 void SetCrowdCheckBox(char* exeName);
 void SetLCM(char* exeName);
 void SaveSetup(char* exeName);
+void ChooseFile(HWND hwnd);
+
+void ChooseFile(HWND hwnd)
+{
+    OPENFILENAME ofn;       // common dialog box structure
+    char szFile[8192];       // buffer for file name
+
+    // Initialize OPENFILENAME
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hwnd;
+    ofn.lpstrFile = szFile;
+    //
+    // Set lpstrFile[0] to '\0' so that GetOpenFileName does not 
+    // use the contents of szFile to initialize itself.
+    //
+    ofn.lpstrFile[0] = '\0';
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = "EXE-files\0*.exe\0XBE-files\0*.xbe\0All\0*.*\0";
+    ofn.nFilterIndex = 2;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+    // Display the Open dialog box. 
+    if (GetOpenFileName(&ofn)==TRUE)
+    {
+        SendMessage(g_exeNameControl, WM_SETTEXT, 0, (LPARAM)ofn.lpstrFile);
+        ShowInfoForSelected(ofn.lpstrFile);
+    }
+}
 
 void ShowInfoForSelected(HWND control)
 {
@@ -359,6 +416,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     SendMessage(g_crowdCheckBox, BM_SETCHECK, BST_UNCHECKED, 0);
                     SetLCMDefaults();
 				}
+                else if ((HWND)lParam == g_findMoreButtonControl)
+                {
+                    ChooseFile(hwnd);
+                }
 			}
 			else if (HIWORD(wParam) == CBN_EDITUPDATE)
 			{
@@ -557,8 +618,8 @@ void SetLCM(char* exeName)
         // LCM controls unsupported
         EnableLCM(FALSE);
 
-        //for xbox, enable weather controls
-        if (g_gameId >= sizeof(ShortNames)/sizeof(char*)) {
+        //for pes5/we9 xbox, enable weather controls
+        if (g_gameId >= PES5_XBOX) {
             //remove last 2 items (unsupported on xbox)
             SendMessage(g_weatherListControl, CB_DELETESTRING, (WPARAM)5, (LPARAM)0);
             SendMessage(g_weatherListControl, CB_DELETESTRING, (WPARAM)5, (LPARAM)0);
@@ -851,7 +912,7 @@ void SaveSetup(char* exeName)
                 fwrite(&flags, sizeof(DWORD), 1, f);
             }
 
-        } else if (g_gameId >= sizeof(ShortNames)/sizeof(char*)) {
+        } else if (g_gameId >= PES5_XBOX) {
             //write xbox weather
             int idx = (int)SendMessage(g_weatherListControl, CB_GETCURSEL, 0, 0);
             fseek(f, WEATHER_SWITCH[g_gameId][0], SEEK_SET);

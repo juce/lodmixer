@@ -9,7 +9,7 @@
 #define WIN_HEIGHT 520
 
 extern HWND g_exeNameControl;             // displays name of the executable
-//extern HWND g_findMoreButtonControl;      // finds more games
+extern HWND g_findMoreButtonControl;      // finds more games
 extern HWND g_gameInfoControl;            // displays key binding for home kit switch
 extern HWND g_lodListControl[5];          // lod lists
 extern HWND g_crowdCheckBox;              // crowd

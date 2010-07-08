@@ -6,7 +6,7 @@
 #include "win32gui.h"
 
 HWND g_exeNameControl;             // displays name of the executable
-//HWND g_findMoreButtonControl;      // finds more games
+HWND g_findMoreButtonControl;      // finds more games
 HWND g_gameInfoControl;            // displays key binding for home kit switch
 HWND g_lodListControl[5];          // lod lists
 HWND g_crowdCheckBox;             // crowd
@@ -84,17 +84,15 @@ bool BuildControls(HWND parent)
     g_exeNameControl = CreateWindowEx(
             xstyle, "ComboBox", "", 
 			CBS_DROPDOWN | WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_TABSTOP,
-            x, y, boxW, boxH * 6,
+            x, y, boxW-butW-spacer, boxH * 6,
             parent, NULL, NULL, NULL);
 
-	x += boxW + spacer;
+	x += boxW-butW;
 
-    /*
 	g_findMoreButtonControl = CreateWindowEx(
 			xstyle, "Button", "Another", style,
 			x, y, butW, butH,
 			parent, NULL, NULL, NULL);
-            */
 
 	butW = 60;
 
@@ -452,7 +450,7 @@ bool BuildControls(HWND parent)
 
 	// If any control wasn't created, return false
 	if (g_gameInfoControl == NULL || g_exeNameControl == NULL || 
-		//g_findMoreButtonControl == NULL || 
+		g_findMoreButtonControl == NULL || 
 		g_statusTextControl == NULL ||
 		g_saveButtonControl == NULL || g_defButtonControl == NULL)
 		return false;
@@ -467,7 +465,7 @@ bool BuildControls(HWND parent)
     EnableWindow(g_crowdCheckBox, FALSE);
     SendMessage(g_weatherListControl, WM_SETFONT, (WPARAM)hObj, true);
     EnableWindow(g_weatherListControl, FALSE);
-	//SendMessage(g_findMoreButtonControl, WM_SETFONT, (WPARAM)hObj, true);
+	SendMessage(g_findMoreButtonControl, WM_SETFONT, (WPARAM)hObj, true);
 
 	SendMessage(g_statusTextControl, WM_SETFONT, (WPARAM)hObj, true);
 	SendMessage(g_saveButtonControl, WM_SETFONT, (WPARAM)hObj, true);

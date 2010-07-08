@@ -2,7 +2,7 @@ CC=cl
 CFLAGS=/nologo
 LINK=link
 LFLAGS=/NOLOGO /NODEFAULTLIB:libci.lib
-LIBS=user32.lib gdi32.lib advapi32.lib
+LIBS=user32.lib gdi32.lib advapi32.lib comdlg32.lib
 
 !if "$(debug)"=="1"
 EXTRA_CFLAGS=

@@ -6,7 +6,7 @@
 #else
 #define LODMIXER_WINDOW_TITLE "LOD Mixer for PES/WE (debug build)"
 #endif
-#define CREDITS "Program info: v1.8a (6/2006) by Juce."
+#define CREDITS "Program info: v1.9 (7/2010) by Juce."
 
 #endif
 
